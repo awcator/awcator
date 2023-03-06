@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @awcator
-- 👀 I’m interested in competative programming,cyber secuirty,hacking,scripting and Networking
-- 💞️ I’m looking to collaborate on any open source projects relateed to abobve intrests.
-- 📫 Reach me @ facebook.com/awcat0r
+- 👀 My interests include competitive programming, cybersecurity, hacking, scripting, and networking.
+- 💞️ I am seeking to collaborate on any open source projects related to these interests.
+- 📫 Reach me @ facebook.com/awcat0r or
 - 🌐 http://awcator.in
 
 <!---
