@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @awcator
 - 👀 My interests include competitive programming, cybersecurity, hacking, scripting, and networking.
 - 💞️ I am seeking to collaborate on any open-source projects related to these interests.
-- 📫 Reach me https://keybase.io/awcator or
+- 📫 Reach me https://keybase.io/awcator or awcator@awcator.com
 - 🌐 http://awcator.com
 
 <!---
