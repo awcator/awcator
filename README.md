@@ -1,11 +1,4 @@
-- 👋 Hi, I’m @awcator
-- 👀 My interests include competitive programming, cybersecurity, hacking, scripting, and networking.
-- 💞️ I am seeking to collaborate on any open-source projects related to these interests.
-- 📫 Reach me https://keybase.io/awcator or awcator@awcator.com
-- 🌐 http://awcator.com
 
-<!---
-awcator/awcator is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
-<img src="https://raw.githubusercontent.com/awcator/awcator/refs/heads/main/a.svg" alt="AWCATOR Particle Animation" />
+<img src="https://raw.githubusercontent.com/awcator/awcator/edd98aaedb2b207bdd1062595d8a18b7153b1790/awcator_particles.svg" alt="AWCATOR Particle Animation" />
+- 👋 Hi, I’m @awcator <br>
+- 📫 Reach me https://keybase.io/awcator or awcator@awcator.com
