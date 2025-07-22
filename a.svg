@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg" xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <defs>
+    <!-- Mask to show particles only within the word shape -->
+    <mask id="text-mask">
+      <rect width="100%" height="100%" fill="black"/>
+      <text x="50%" y="50%" dy="0.35em" text-anchor="middle"
+            font-family="Arial, sans-serif" font-size="100" font-weight="bold"
+            fill="white">AWCATOR</text>
+    </mask>
+    <!-- Dark theme background gradient -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#222222"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+
+  <!-- Particle layer, always masked to word shape -->
+  <g id="particles" mask="url(#text-mask)"></g>
+
+  <script><![CDATA[
+    (function() {
+      const svg = document.getElementById('svg');
+      const particlesGroup = document.getElementById('particles');
+      const numParticles = 1000;
+      const width = svg.viewBox.baseVal.width;
+      const height = svg.viewBox.baseVal.height;
+      const formDuration = 1500;
+      const scatterDuration = 1500;
+      const pauseBetween = 500;
+
+      // Prepare grid of target positions within the word shape
+      const rows = 10;
+      const cols = Math.ceil(numParticles / rows);
+      const targets = [];
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          targets.push({
+            x: (c + 0.5) * (width / cols),
+            y: (r + 0.5) * (height / rows)
+          });
+        }
+      }
+
+      // Create particles with initial random positions (within shape mask) by picking random targets
+      const colors = ['#FF4136','#FF851B','#FFDC00','#2ECC40','#7FDBFF','#B10DC9'];
+      const particles = [];
+      for (let i = 0; i < numParticles; i++) {
+        const circle = document.createElementNS(svg.namespaceURI, 'circle');
+        circle.setAttribute('r', Math.random() * 2 + 1);
+        circle.setAttribute('fill', colors[Math.floor(Math.random() * colors.length)]);
+        // initialize at a random position within shape
+        const init = targets[Math.floor(Math.random() * targets.length)];
+        circle.setAttribute('cx', init.x);
+        circle.setAttribute('cy', init.y);
+        particlesGroup.appendChild(circle);
+        particles.push({ el: circle, target: init });
+      }
+
+      function form() {
+        // animate each particle to its designated formation target
+        particles.forEach((p, i) => {
+          const formation = targets[i % targets.length];
+          p.el.animate([
+            { cx: p.el.getAttribute('cx'), cy: p.el.getAttribute('cy') },
+            { cx: formation.x, cy: formation.y }
+          ], { duration: formDuration, fill: 'forwards', easing: 'ease-in-out' });
+          p.target = formation;
+        });
+      }
+
+      function scatter() {
+        // animate particles to new random positions within the shape
+        particles.forEach(p => {
+          const next = targets[Math.floor(Math.random() * targets.length)];
+          p.el.animate([
+            { cx: p.target.x, cy: p.target.y },
+            { cx: next.x, cy: next.y }
+          ], { duration: scatterDuration, fill: 'forwards', easing: 'ease-in-out' });
+          p.target = next;
+        });
+      }
+
+      // sequence: form -> pause -> scatter -> pause -> repeat
+      function cycle() {
+        form();
+        setTimeout(() => {
+          scatter();
+        }, formDuration + pauseBetween);
+      }
+
+      cycle();
+      setInterval(cycle, formDuration + scatterDuration + pauseBetween * 2);
+    })();
+  ]]></script>
+</svg>
